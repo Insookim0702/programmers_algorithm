@@ -14,7 +14,7 @@ public class 베스트앨범 {
         }
         Map<String, Integer> result = sortMapByValue(genresPlaysTotal);
         for(Map.Entry<String, Integer> entry : result.entrySet()){
-            que.add(entry.getKey());
+            que.add(entry.getKey());  //que = {"pop", "classic"}
         }
 
 
@@ -26,12 +26,15 @@ public class 베스트앨범 {
             }else{
                 map.get(genres[i]).add(new Sing(i, plays[i]));
             }
+            //map.entry = {"pop",[[1, 300],[2, 400]]}
             //map.put(genres[i], map.getOrDefault(genres[i], new LinkedList<Sing>()).add(new Sing(i,plays[i])));
         }
         Set<String> genresName = map.keySet();
         for(String g : genresName){
             List<Sing> s = map.get(g);
             Collections.sort(s);
+            //{"pop", [[2, 400],[1, 200],[3, 40]]}
+            //{"classic", [[1, 1300],[3, 300], [2, 140]]}
         }
         List<Integer> answerList = new LinkedList();
         while(!que.isEmpty()){
