@@ -12,13 +12,15 @@ public class HIndex {
             arr[k] = citations[k];
         }
         Arrays.sort(arr, Collections.reverseOrder());
-        //for(int i = arr[0]; i > arr[arr.length-1]; i--){
-        for(int i : arr){
-            int finalI = i;
+        for(int h = arr[0]; h > 0; h--){
+        //for(int i : arr){
+            int finalI = h;
             long more = Arrays.stream(arr).filter(n -> n >= finalI).count();
-            long less = Arrays.stream(arr).filter(n -> n <= finalI).count();
-            if(more == less){
-                return i;
+            if(more < h){
+                continue;
+            }
+            if(Arrays.stream(arr).filter(n -> n < finalI).count() +more == arr.length){
+                return h;
             }
         }
         return answer;
