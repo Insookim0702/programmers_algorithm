@@ -16,7 +16,8 @@ public class 가장큰수2 {
         }
 
         Collections.sort(list, (a, b) ->{
-            String as = String.valueOf(a), bs = String.valueOf(b);
+            String as = String.valueOf(a);
+            String bs = String.valueOf(b);
             return -Integer.compare(Integer.parseInt(as + bs), Integer.parseInt(bs + as));
         });
 
